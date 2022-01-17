@@ -15,8 +15,12 @@ public class CanvasTests
         var black = Color(0, 0, 0);
 
         for (var x = 0; x < canvas.Width; x++)
-        for (var y = 0; y < canvas.Height; y++)
-            canvas[x, y].Should().Be(black);
+        {
+            for (var y = 0; y < canvas.Height; y++)
+            {
+                canvas[x, y].Should().Be(black);
+            }
+        }
     }
 
     [Fact]

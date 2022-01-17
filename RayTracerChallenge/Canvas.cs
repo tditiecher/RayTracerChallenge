@@ -33,20 +33,26 @@ public class Canvas
         await writer.WriteLineAsync($"{maxColorValue}");
 
         for (var x = 0; x < Width; x++)
-        for (var y = 0; y < Height; y++)
         {
-            var color = _pixels[x, y];
-            var r = Convert.ToInt32(Math.Max(0, Math.Min(maxColorValue, color.Red)));
-            var g = Convert.ToInt32(Math.Max(0, Math.Min(maxColorValue, color.Green)));
-            var b = Convert.ToInt32(Math.Max(0, Math.Min(maxColorValue, color.Blue)));
-            await writer.WriteLineAsync($"{r} {g} {b}");
+            for (var y = 0; y < Height; y++)
+            {
+                var color = _pixels[x, y];
+                var r = Convert.ToInt32(Math.Max(0, Math.Min(maxColorValue, color.Red)));
+                var g = Convert.ToInt32(Math.Max(0, Math.Min(maxColorValue, color.Green)));
+                var b = Convert.ToInt32(Math.Max(0, Math.Min(maxColorValue, color.Blue)));
+                await writer.WriteLineAsync($"{r} {g} {b}");
+            }
         }
     }
 
     private void ClearPixels()
     {
         for (var x = 0; x < Width; x++)
-        for (var y = 0; y < Height; y++)
-            _pixels[x, y] = new Color(0, 0, 0);
+        {
+            for (var y = 0; y < Height; y++)
+            {
+                _pixels[x, y] = new Color(0, 0, 0);
+            }
+        }
     }
 }
