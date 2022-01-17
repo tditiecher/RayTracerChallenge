@@ -128,5 +128,25 @@ public readonly struct Tuple : IEquatable<Tuple>
         {
             return new Tuple(x, y, z, 0);
         }
+
+        public static double Magnitude(Tuple t)
+        {
+            return t.Magnitude;
+        }
+
+        public static Tuple Normalize(Tuple t)
+        {
+            return t.Normalize();
+        }
+        
+        public static double Dot(Tuple left, Tuple right)
+        {
+            return left.Dot(right);
+        }
+
+        public static Tuple Cross(Tuple left, Tuple right)
+        {
+            return left.Cross(right);
+        }
     }
 }

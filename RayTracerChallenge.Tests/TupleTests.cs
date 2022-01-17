@@ -139,24 +139,24 @@ public class TupleTests
     [Fact]
     public void ComputingMagnitudeOfVector()
     { 
-        Vector(1, 0, 0).Magnitude.Should().Be(1);
-        Vector(0, 1, 0).Magnitude.Should().Be(1);
-        Vector(0, 0, 1).Magnitude.Should().Be(1);
-        Vector(1, 2, 3).Magnitude.Should().Be(Math.Sqrt(14));
-        Vector(-1, -2, -3).Magnitude.Should().Be(Math.Sqrt(14));
+        Magnitude(Vector(1, 0, 0)).Should().Be(1);
+        Magnitude(Vector(0, 1, 0)).Should().Be(1);
+        Magnitude(Vector(0, 0, 1)).Should().Be(1);
+        Magnitude(Vector(1, 2, 3)).Should().Be(Math.Sqrt(14));
+        Magnitude(Vector(-1, -2, -3)).Should().Be(Math.Sqrt(14));
     }
 
     [Fact]
     public void NormalizingVector()
     {
-        Vector(4, 0, 0).Normalize().Should().Be(Vector(1, 0, 0));
-        Vector(1, 2, 3).Normalize().Should().Be(Vector(0.26726, 0.53452, 0.80178));
+        Normalize(Vector(4, 0, 0)).Should().Be(Vector(1, 0, 0));
+        Normalize(Vector(1, 2, 3)).Should().Be(Vector(0.26726, 0.53452, 0.80178));
     }
 
     [Fact]
     public void MagnitudeOfNormalizedVector()
     {
-        Vector(1, 2, 3).Normalize().Magnitude.Should().Be(1);
+        Magnitude(Normalize(Vector(1, 2, 3))).Should().Be(1);
     }
 
     [Fact]
@@ -165,8 +165,8 @@ public class TupleTests
         var a = Vector(1, 2, 3);
         var b = Vector(2, 3, 4);
 
-        a.Dot(b).Should().Be(20);
-        b.Dot(a).Should().Be(20);
+        Dot(a, b).Should().Be(20);
+        Dot(a, b).Should().Be(20);
     }
 
     [Fact]
@@ -175,7 +175,7 @@ public class TupleTests
         var a = Vector(1, 2, 3);
         var b = Vector(2, 3, 4);
 
-        a.Cross(b).Should().Be(Vector(-1, 2, -1));
-        b.Cross(a).Should().Be(Vector(1, -2, 1));
+        Cross(a, b).Should().Be(Vector(-1, 2, -1));
+        Cross(b, a).Should().Be(Vector(1, -2, 1));
     }
 }
