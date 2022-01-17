@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerChallenge.Tests", "RayTracerChallenge.Tests\RayTracerChallenge.Tests.csproj", "{13D07FFC-F6F6-433A-8216-4827B7C7B3D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracerChallenge", "RayTracerChallenge\RayTracerChallenge.csproj", "{50371DDA-A955-41C5-84D3-1683C4C10478}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{B6C2C7BC-75AD-47B1-9419-E837BD0DDE28}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13D07FFC-F6F6-433A-8216-4827B7C7B3D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D07FFC-F6F6-433A-8216-4827B7C7B3D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D07FFC-F6F6-433A-8216-4827B7C7B3D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D07FFC-F6F6-433A-8216-4827B7C7B3D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50371DDA-A955-41C5-84D3-1683C4C10478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50371DDA-A955-41C5-84D3-1683C4C10478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50371DDA-A955-41C5-84D3-1683C4C10478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50371DDA-A955-41C5-84D3-1683C4C10478}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
