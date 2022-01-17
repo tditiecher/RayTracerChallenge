@@ -110,15 +110,15 @@ public readonly struct Tuple : IEquatable<Tuple>
     {
         return tuple.Divide(value);
     }
-    
-    
+
+
     public static class Static
     {
         public static Tuple Tuple(double x, double y, double z, double w)
         {
             return new Tuple(x, y, z, w);
         }
-    
+
         public static Tuple Point(double x, double y, double z)
         {
             return new Tuple(x, y, z, 1);
@@ -138,7 +138,7 @@ public readonly struct Tuple : IEquatable<Tuple>
         {
             return t.Normalize();
         }
-        
+
         public static double Dot(Tuple left, Tuple right)
         {
             return left.Dot(right);

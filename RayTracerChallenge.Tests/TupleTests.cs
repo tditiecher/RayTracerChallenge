@@ -48,7 +48,7 @@ public class TupleTests
 
         v.Should().Be(Tuple(4, -4, 3, 0));
     }
-    
+
     [Fact]
     public void AddingTwoTuples()
     {
@@ -138,7 +138,7 @@ public class TupleTests
 
     [Fact]
     public void ComputingMagnitudeOfVector()
-    { 
+    {
         Magnitude(Vector(1, 0, 0)).Should().Be(1);
         Magnitude(Vector(0, 1, 0)).Should().Be(1);
         Magnitude(Vector(0, 0, 1)).Should().Be(1);
