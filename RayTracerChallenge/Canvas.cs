@@ -2,6 +2,8 @@
 
 public class Canvas
 {
+    private readonly Color[,] _pixels;
+
     public Canvas(int width, int height)
     {
         Width = width;
@@ -10,8 +12,6 @@ public class Canvas
 
         ClearPixels();
     }
-
-    private Color[,] _pixels { get; }
 
     public int Width { get; }
     public int Height { get; }
