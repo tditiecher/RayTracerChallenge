@@ -8,7 +8,7 @@ public class MatrixTests
     [Fact]
     public void ConstructingAndInspectingMatrix4()
     {
-        var m = new Matrix4(
+        Matrix4 m = new(
             1, 2, 3, 4,
             5.5, 6.5, 7.5, 8.5,
             9, 10, 11, 12,
@@ -26,7 +26,7 @@ public class MatrixTests
     [Fact]
     public void ConstructingAndInspectingMatrix2()
     {
-        var m = new Matrix2(
+        Matrix2 m = new(
             -3, 5,
             1, -2);
 
@@ -39,7 +39,7 @@ public class MatrixTests
     [Fact]
     public void ConstructingAndInspectingMatrix3()
     {
-        var m = new Matrix3(
+        Matrix3 m = new(
             -3, 5, 0,
             1, -2, -7,
             0, 1, 1);
@@ -52,13 +52,13 @@ public class MatrixTests
     [Fact]
     public void EqualityOfMatrix4()
     {
-        var m1 = new Matrix4(
+        Matrix4 m1 = new(
             1, 2, 3, 4,
             5.5, 6.5, 7.5, 8.5,
             9, 10, 11, 12,
             13.5, 14.5, 15.5, 16.5);
 
-        var m2 = new Matrix4(
+        Matrix4 m2 = new(
             1, 2, 3, 4,
             5.5, 6.5, 7.5, 8.5,
             9, 10, 11, 12,
@@ -71,13 +71,13 @@ public class MatrixTests
     [Fact]
     public void InqualityOfMatrix4()
     {
-        var m1 = new Matrix4(
+        Matrix4 m1 = new(
             1, 2, 3, 4,
             5.5, 6.5, 7.5, 8.5,
             9, 10, 11, 12,
             13.5, 14.5, 15.5, 16.5);
 
-        var m2 = new Matrix4(
+        Matrix4 m2 = new(
             1, 2, 3, 4,
             9, 10, 11, 12,
             5.5, 6.5, 7.5, 8.5,
@@ -90,12 +90,12 @@ public class MatrixTests
     [Fact]
     public void EqualityOfMatrix3()
     {
-        var m1 = new Matrix3(
+        Matrix3 m1 = new(
             1, 2, 3,
             5.5, 6.5, 7.5,
             9, 10, 11);
 
-        var m2 = new Matrix3(
+        Matrix3 m2 = new(
             1, 2, 3,
             5.5, 6.5, 7.5,
             9, 10, 11);
@@ -107,12 +107,12 @@ public class MatrixTests
     [Fact]
     public void InqualityOfMatrix3()
     {
-        var m1 = new Matrix3(
+        Matrix3 m1 = new(
             5.5, 6.5, 7.5,
             1, 2, 3,
             9, 10, 11);
 
-        var m2 = new Matrix3(
+        Matrix3 m2 = new(
             1, 2, 3,
             5.5, 6.5, 7.5,
             9, 10, 11);
@@ -124,11 +124,11 @@ public class MatrixTests
     [Fact]
     public void EqualityOfMatrix2()
     {
-        var m1 = new Matrix2(
+        Matrix2 m1 = new(
             1, 2,
             9, 10);
 
-        var m2 = new Matrix2(
+        Matrix2 m2 = new(
             1, 2,
             9, 10);
 
@@ -139,15 +139,55 @@ public class MatrixTests
     [Fact]
     public void InqualityOfMatrix2()
     {
-        var m1 = new Matrix2(
+        Matrix2 m1 = new(
             1, 2,
             9, 10);
 
-        var m2 = new Matrix2(
+        Matrix2 m2 = new(
             3, 2,
             9, 10);
 
         (m1 == m2).Should().BeFalse();
         m1.GetHashCode().Should().NotBe(m2.GetHashCode());
+    }
+
+    [Fact]
+    public void MultiplyingTwoMatrices()
+    {
+        Matrix4 m1 = new(
+            1, 2, 3, 4,
+            5, 6, 7, 8,
+            9, 8, 7, 6,
+            5, 4, 3, 2);
+
+        Matrix4 m2 = new(
+            -2, 1, 2, 3,
+            3, 2, 1, -1,
+            4, 3, 6, 5,
+            1, 2, 7, 8);
+
+        Matrix4 expected = new(
+            20, 22, 50, 48,
+            44, 54, 114, 108,
+            40, 58, 110, 102,
+            16, 26, 46, 42);
+
+        (m1 * m2).Should().Be(expected);
+    }
+
+    [Fact]
+    public void MultiplyMatrixByTuple()
+    {
+        Matrix4 m = new(
+            1, 2, 3, 4,
+            2, 4, 4, 2,
+            8, 6, 4, 1,
+            0, 0, 0, 1);
+
+        Tuple t = new(1, 2, 3, 1);
+
+        Tuple expected = new(18, 24, 33, 1);
+
+        (m * t).Should().Be(expected);
     }
 }

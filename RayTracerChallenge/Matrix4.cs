@@ -6,11 +6,7 @@ public readonly struct Matrix4
 
     private readonly double[,] _values;
 
-    public double this[int row, int col]
-    {
-        get => _values[row, col];
-        private init => _values[row, col] = value;
-    }
+    public double this[int row, int col] => _values[row, col];
 
     public Matrix4(
         double c00, double c01, double c02, double c03
@@ -19,22 +15,27 @@ public readonly struct Matrix4
         , double c30, double c31, double c32, double c33)
     {
         _values = new double[Size, Size];
-        this[0, 0] = c00;
-        this[0, 1] = c01;
-        this[0, 2] = c02;
-        this[0, 3] = c03;
-        this[1, 0] = c10;
-        this[1, 1] = c11;
-        this[1, 2] = c12;
-        this[1, 3] = c13;
-        this[2, 0] = c20;
-        this[2, 1] = c21;
-        this[2, 2] = c22;
-        this[2, 3] = c23;
-        this[3, 0] = c30;
-        this[3, 1] = c31;
-        this[3, 2] = c32;
-        this[3, 3] = c33;
+        _values[0, 0] = c00;
+        _values[0, 1] = c01;
+        _values[0, 2] = c02;
+        _values[0, 3] = c03;
+        _values[1, 0] = c10;
+        _values[1, 1] = c11;
+        _values[1, 2] = c12;
+        _values[1, 3] = c13;
+        _values[2, 0] = c20;
+        _values[2, 1] = c21;
+        _values[2, 2] = c22;
+        _values[2, 3] = c23;
+        _values[3, 0] = c30;
+        _values[3, 1] = c31;
+        _values[3, 2] = c32;
+        _values[3, 3] = c33;
+    }
+
+    private Matrix4(double[,] values)
+    {
+        _values = values;
     }
 
     public bool Equals(Matrix4 other)
@@ -73,6 +74,44 @@ public readonly struct Matrix4
         return HashCode.Combine(r0, r1, r2, r3, c0, c1, c2, c3);
     }
 
+    public Matrix4 Multiply(Matrix4 other)
+    {
+        var values = new double[Size, Size];
+
+        for (var row = 0; row < Size; row++)
+        {
+            for (var col = 0; col < Size; col++)
+            {
+                values[row, col] =
+                    this[row, 0] * other[0, col] +
+                    this[row, 1] * other[1, col] +
+                    this[row, 2] * other[2, col] +
+                    this[row, 3] * other[3, col];
+            }
+        }
+
+        return new Matrix4(values);
+    }
+
+    public Tuple Multiply(Tuple tuple)
+    {
+        var values = new double[Size, 1];
+
+        for (var row = 0; row < Size; row++)
+        {
+            for (var col = 0; col < Size; col++)
+            {
+                values[row, 0] =
+                    this[row, 0] * tuple.X +
+                    this[row, 1] * tuple.Y +
+                    this[row, 2] * tuple.Z +
+                    this[row, 3] * tuple.W;
+            }
+        }
+
+        return new Tuple(values[0, 0], values[1, 0], values[2, 0], values[3, 0]);
+    }
+
     public static bool operator ==(Matrix4 left, Matrix4 right)
     {
         return left.Equals(right);
@@ -81,5 +120,15 @@ public readonly struct Matrix4
     public static bool operator !=(Matrix4 left, Matrix4 right)
     {
         return !(left == right);
+    }
+
+    public static Matrix4 operator *(Matrix4 left, Matrix4 right)
+    {
+        return left.Multiply(right);
+    }
+
+    public static Tuple operator *(Matrix4 left, Tuple right)
+    {
+        return left.Multiply(right);
     }
 }
