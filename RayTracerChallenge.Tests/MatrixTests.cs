@@ -211,4 +211,28 @@ public class MatrixTests
 
         (Matrix4.Identity * t).Should().Be(t);
     }
+
+    [Fact]
+    public void TransposingMatrix()
+    {
+        Matrix4 m = new(
+            0, 9, 3, 0,
+            9, 8, 0, 8,
+            1, 8, 5, 3,
+            0, 0, 5, 8);
+
+        Matrix4 expected = new(
+            0, 9, 1, 0,
+            9, 8, 8, 0,
+            3, 0, 5, 5,
+            0, 8, 3, 8);
+
+        m.Transpose().Should().Be(expected);
+    }
+
+    [Fact]
+    public void TransposingIdentityMatrix()
+    {
+        Matrix4.Identity.Transpose().Should().Be(Matrix4.Identity);
+    }
 }

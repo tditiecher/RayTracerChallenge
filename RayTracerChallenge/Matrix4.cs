@@ -118,6 +118,15 @@ public readonly struct Matrix4
         return new Tuple(values[0, 0], values[1, 0], values[2, 0], values[3, 0]);
     }
 
+    public Matrix4 Transpose()
+    {
+        return new Matrix4(
+            this[0, 0], this[1, 0], this[2, 0], this[3, 0],
+            this[0, 1], this[1, 1], this[2, 1], this[3, 1],
+            this[0, 2], this[1, 2], this[2, 2], this[3, 2],
+            this[0, 3], this[1, 3], this[2, 3], this[3, 3]);
+    }
+
     public static bool operator ==(Matrix4 left, Matrix4 right)
     {
         return left.Equals(right);
