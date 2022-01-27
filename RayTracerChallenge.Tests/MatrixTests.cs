@@ -190,4 +190,25 @@ public class MatrixTests
 
         (m * t).Should().Be(expected);
     }
+
+    [Fact]
+    public void MultiplyingMatrixByIdentityMatrix()
+    {
+        Matrix4 m = new(
+            0, 1, 2, 4,
+            1, 2, 4, 8,
+            2, 4, 8, 16,
+            4, 8, 16, 32);
+
+        (m * Matrix4.Identity).Should().Be(m);
+    }
+
+
+    [Fact]
+    public void MultiplyingIdentityMatrixByTuple()
+    {
+        Tuple t = new(1, 2, 3, 4);
+
+        (Matrix4.Identity * t).Should().Be(t);
+    }
 }

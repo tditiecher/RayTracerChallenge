@@ -38,6 +38,12 @@ public readonly struct Matrix4
         _values = values;
     }
 
+    public static Matrix4 Identity { get; } = new(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1);
+
     public bool Equals(Matrix4 other)
     {
         for (var row = 0; row < Size; row++)
